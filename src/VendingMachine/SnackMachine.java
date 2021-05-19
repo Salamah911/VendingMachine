@@ -104,11 +104,11 @@ public class SnackMachine extends VendingMachine implements State{
                         if(paymentMethod == 1)
                         {
                             collect = new ArrayList<>();
-                            System.out.println("Enter amount (machine only accepts 10c, 20c and 50c) ");
+                            System.out.println("Enter amount (machine only accepts 10c, 20c, 50c and 100c(1 dollar)) "); 
                             while(getMoneyValue(collect) < items[row][column].getPrice())
                             {
                                 int cent = input.nextInt();
-                                if(cent == 1)
+                                if(cent == 0)
                                 {
                                     collect.removeAll(collect);
                                     row = 0;
@@ -134,7 +134,7 @@ public class SnackMachine extends VendingMachine implements State{
 
                                 System.out.print("Your balance: "+getMoneyValue(collect)+" ");
                                 if(getMoneyValue(collect) < items[row][column].getPrice())
-                                    System.out.print("You need more, insert next(you can press 1 to calcell process and return your money):  ");
+                                    System.out.print("You need more, insert next(you can press 0 to calcell process and return your money):  ");
                             }
                             System.out.println();
                             return 1;
@@ -146,7 +146,7 @@ public class SnackMachine extends VendingMachine implements State{
                             while(getMoneyValue(collect) < items[row][column].getPrice())
                             {
                                 int dollar = input.nextInt();
-                                if(dollar == 1)
+                                if(dollar == 0)
                                 {
                                     collect.removeAll(collect);
                                     row = 0;
@@ -172,7 +172,7 @@ public class SnackMachine extends VendingMachine implements State{
 
                                 System.out.print("Your balance: "+getMoneyValue(collect)+" ");
                                 if(getMoneyValue(collect) < items[row][column].getPrice())
-                                    System.out.print("You need more, insert next (you can enter press 1 to cancel the process and return your money):  ");
+                                    System.out.print("You need more, insert next (you can enter press 0 to cancel the process and return your money):  ");
                             }
                             System.out.println();
                             return 2;
@@ -223,14 +223,14 @@ public class SnackMachine extends VendingMachine implements State{
     {
         if(choice == 1)
         {
-            if(category != 10 && category != 20 && category != 50)
+            if(category != 10 && category != 20 && category != 50 && category != 100)
             {
                 return false;
             }
         }
         else if(choice == 2)
         {
-            if (category != 1 && category != 20 && category != 50)
+            if (category != 20 && category != 50)
                 return false;
         }
         return true;
